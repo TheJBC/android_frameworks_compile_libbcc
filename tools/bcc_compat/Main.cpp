@@ -178,8 +178,13 @@ bool ConfigCompiler(RSCompilerDriver &pCompilerDriver) {
   // Explicitly set ARM feature vector
   if (config->getTriple().find("arm") != std::string::npos) {
     std::vector<std::string> fv;
+#if defined(TARGET_CPU_VARIANT_ARM11)
+    fv.push_back("+vfp2");
+    fv.push_back("-d16");
+#else
     fv.push_back("+vfp3");
     fv.push_back("+d16");
+#endif
     fv.push_back("-neon");
     fv.push_back("-neonfp");
     config->setFeatureString(fv);

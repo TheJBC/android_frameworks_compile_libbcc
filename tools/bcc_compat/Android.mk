@@ -40,6 +40,10 @@ endif
 
 LOCAL_SRC_FILES := Main.cpp
 
+ifeq ($(TARGET_CPU_VARIANT),arm11)
+  LOCAL_CFLAGS += -DTARGET_CPU_VARIANT_ARM11
+endif
+
 include $(LIBBCC_HOST_BUILD_MK)
 include $(LIBBCC_GEN_CONFIG_MK)
 include $(LLVM_HOST_BUILD_MK)

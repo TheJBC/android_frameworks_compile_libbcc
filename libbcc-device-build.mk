@@ -42,6 +42,9 @@ ifeq ($(TARGET_ARCH),arm)
       LOCAL_CFLAGS += -DARCH_ARM_HAVE_VFP_D32
     endif
   endif
+  ifeq ($(TARGET_CPU_VARIANT),arm11)
+    LOCAL_CFLAGS += -DTARGET_CPU_VARIANT_ARM11
+  endif
   ifeq ($(ARCH_ARM_HAVE_NEON),true)
     LOCAL_CFLAGS += -DARCH_ARM_HAVE_NEON
   endif
